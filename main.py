@@ -2,6 +2,7 @@
 import datetime
 import sqlite3
 import time
+import datetime
 import sys
 from geopy.geocoders import Nominatim
 
@@ -45,11 +46,11 @@ class ApiScraper:
                     "lng) values (?,?,?,?,?,?,?,?,?)",
                     (station.station_id, station.name, station.brand, station.street, station.houseNumber,
                      station.postCode, station.place, station.lat, station.lng))
-                print ("inserted new station with id {id}".format(id=station.station_id))
+                print (datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " inserted new station with id {id}".format(id=station.station_id))
             # price list gets inserted with foreign key of the gasstation it belongs to
             self.cur.execute("INSERT INTO prices (gasstation,e5,e10,diesel,time_stamp) VALUES (?,?,?,?,?)",
                              (station.station_id, prices.e5, prices.e10, prices.diesel, prices.time_stamp))
-            print ("inserted new price-list for station with id {id}".format(id=station.station_id))
+            print (datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " inserted new price-list for station with id {id}".format(id=station.station_id))
         self.db.commit()
 
 
