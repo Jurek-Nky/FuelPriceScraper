@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  fuelscraper: 
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: python
+    restart: always
+    

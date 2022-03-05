@@ -18,7 +18,7 @@ class ApiScraper:
     def __init__(self, postcode):
         self.db = sqlite3.connect("priceScraper.db")
         self.cur = self.db.cursor()
-        self.geo_app = Nominatim()
+        self.geo_app = Nominatim(user_agent="fuelScraper")
         self.fetch_stations_in_radius(postcode)
 
     def fetch_stations_in_radius(self, postcode):
