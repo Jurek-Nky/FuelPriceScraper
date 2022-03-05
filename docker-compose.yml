@@ -6,4 +6,5 @@ services:
       dockerfile: Dockerfile
     image: python
     restart: always
-    
+    volumes:
+      - ./priceScraper.db:/usr/src/app/priceScraper.db
